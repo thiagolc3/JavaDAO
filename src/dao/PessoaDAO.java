@@ -24,8 +24,6 @@ public class PessoaDAO {
                         + "VALUES (?,?,?,?,?,?);"
         );
         
-//INSERT INTO agenda (pessoa) VALUES (?)
-        
         stmt.setString(1, p.getNome());
         stmt.setString(2, p.getEmail());
         stmt.setString(3, p.getCpf());
