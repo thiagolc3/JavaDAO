@@ -5,12 +5,10 @@
  */
 package dao;
 
-import java.sql.Date;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
-
 /**
  *
  * @author lsfo1
@@ -61,30 +59,15 @@ public class Main {
         System.out.print("Insira o telefone: ");
         pessoa.setTelefone(tecla.next());
         
-        System.out.print("Insira o sexo: ");
-        pessoa.setSexo(tecla.next().substring(0, 1));
-
-        System.out.print("Insira a data de nascimento no formato dd/mm/yyyy: ");
-
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        sdf.setLenient(false);
-
-        java.util.Date date = null;
-
-        while (date == null) {          
-
-            String dataString = tecla.nextLine();
-            
-            try {
-                date = sdf.parse(dataString);
-            } 
-            catch(ParseException e) {
-                System.err.println("Data inválida");
-            }
-        }
+        System.out.print("Insira o sexo(m ou f): ");
+        if("m".equals(tecla.next().substring(0, 1)))
+            pessoa.setSexo(Boolean.TRUE);
+        else
+            pessoa.setSexo(Boolean.FALSE);
         
-        java.sql.Date SQLdate = new Date(date.getTime());
-        pessoa.setDataNascimento(SQLdate);
+        System.out.print("Insira a data de nascimento no formato dd/mm/yyyy: ");        
+        java.util.Date dataNasc = new SimpleDateFormat("dd/mm/yyyy").parse(tecla.next());
+        pessoa.setDataNascimento(dataNasc);
 
         PessoaDAO pessoaDAO = new PessoaDAO();
         pessoaDAO.inserir(pessoa);

@@ -5,16 +5,15 @@
  */
 package dao;
 
-import java.sql.Date;
-
 /**
  *
  * @author lsfo
  */
 public class Pessoa {
 
-    private String nome, email, cpf, telefone , sexo;
-    private Date dataNascimento;
+    private String nome, email, cpf, telefone;
+    private Boolean sexo;
+    private java.util.Date dataNascimento;
 
     public String getNome() {
         return nome;
@@ -48,19 +47,19 @@ public class Pessoa {
         this.telefone = telefone;
     }
 
-    public String getSexo() {
+    public Boolean getSexo() {
         return sexo;
     }
 
-    public void setSexo(String sexo) {
+    public void setSexo(Boolean sexo) {
         this.sexo = sexo;
     }
 
-    public Date getDataNascimento() {
+    public java.util.Date getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(java.util.Date dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 }

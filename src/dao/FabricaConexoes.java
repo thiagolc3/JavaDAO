@@ -19,7 +19,7 @@ public class FabricaConexoes {
     public FabricaConexoes() {
         servidor = "localhost";
         base = "base";
-        login = "aluno";
+        login = "alunodb";
         senha ="unicarioca";
     }
  
