@@ -8,6 +8,8 @@ package dao;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 /**
  *
@@ -27,7 +29,8 @@ public class Main {
                     //System.out.println("3-Atualizar Pessoa");
                     //System.out.println("4-Listar Pessoas");
                     System.out.println("5-Inserir Categoria");
-                    System.out.println("6-Remover Categoria"); 
+                    System.out.println("6-Remover Categoria");
+                    System.out.println("7-Listar Categorias");
                     System.out.println("9-Sair");
                     System.out.println("**********************");
 
@@ -43,6 +46,7 @@ public class Main {
                         case 4: listar(); break;
                         case 5: inserirCategoria(); break;
                         case 6: removerCategoria(); break;
+                        case 7: listarCategoria(); break;
                         case 9: break;
                     }
                 } while (op!=9);
@@ -116,5 +120,18 @@ public class Main {
             System.out.println("OK");
         else
             System.out.println("Fail");
+    }
+
+    private static void listarCategoria() throws ClassNotFoundException, SQLException {
+        CategoriaDAO operacao = new CategoriaDAO();
+        ArrayList lista = operacao.listar();
+        Iterator indice = lista.iterator();
+        Categoria cat = new Categoria();
+        
+        int i=0;
+        while(indice.hasNext()) {
+            System.out.println((Categoria) lista.get(i++));
+            indice.next();
+        }
     }
 }

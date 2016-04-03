@@ -30,4 +30,13 @@ public class Categoria {
     public int getClasse(){
         return this.classe;
     }
+    
+    @Override
+    public String toString(){
+        String CategoriaString = "Nome: " + this.nome;
+        CategoriaString += "\n";
+        CategoriaString += "Classe: " + this.classe;
+        CategoriaString += "\n";
+        return CategoriaString;
+    }
 }
