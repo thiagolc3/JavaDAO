@@ -26,7 +26,8 @@ public class Main {
                     System.out.println("2-Remover Pessoa");
                     System.out.println("3-Atualizar Pessoa");
                     System.out.println("4-Listar Pessoas");
-                    System.out.println("5-Sair");
+                    System.out.println("5-Inserir Categoria");                    
+                    System.out.println("9-Sair");
                     System.out.println("**********************");
 
 
@@ -39,9 +40,10 @@ public class Main {
                         case 2: remover(); break;
                         case 3: atualizar(); break;
                         case 4: listar(); break;
-                        case 5: break;
+                        case 5: inserirCategoria(); break;
+                        case 9: break;
                     }
-                } while (op!=5);
+                } while (op!=9);
     }
 
     private static void inserir() throws ClassNotFoundException, SQLException, ParseException {
@@ -83,5 +85,21 @@ public class Main {
 
     private static void listar() {
 
+    }
+
+    private static void inserirCategoria() throws ClassNotFoundException, SQLException {
+        Categoria categoria = new Categoria();
+        
+        System.out.print("\nInsira nome da nova categoria: ");
+        categoria.setNome(tecla.next());
+        
+        System.out.print("Insira a classe da nova categoria(1-5): ");
+        categoria.setClasse(tecla.nextInt());
+        
+        CategoriaDAO CatDAO = new CategoriaDAO();
+        if(CatDAO.inserir(categoria) > 0)
+            System.out.println("Inseriu");
+        else
+            System.out.println("Nao inseriu");
     }
 }
