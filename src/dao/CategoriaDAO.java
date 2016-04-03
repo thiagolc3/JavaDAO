@@ -35,12 +35,22 @@ public class CategoriaDAO {
 
     public int inserir(Categoria c) throws SQLException{
 
-        PreparedStatement stmt = banco.prepareStatement("INSERT INTO categoria"
-                + "(nome, classe)"
+        PreparedStatement stmt = banco.prepareStatement("INSERT INTO categoria "
+                + "(nome, classe) "
                 + "VALUES(?,?)");
         
         stmt.setString(1,c.getNome());
         stmt.setInt(2, c.getClasse());
+        
+        return stmt.executeUpdate();
+    }
+    
+    public int remover(Categoria c) throws SQLException{
+        
+        PreparedStatement stmt = banco.prepareStatement("DELETE FROM categoria "
+                + "WHERE nome LIKE ?");
+        
+        stmt.setString(1, "%"+c.getNome()+"%");
         
         return stmt.executeUpdate();
     }
